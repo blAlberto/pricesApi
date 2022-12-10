@@ -1,16 +1,17 @@
 package com.pricesApi.controller;
 
-import com.pricesApi.request.ProductPriceByDateRequest;
 import com.pricesApi.response.PriceResponse;
 import com.pricesApi.service.PriceService;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @RestController()
 @RequestMapping("/prices")
@@ -19,11 +20,23 @@ public class PriceController {
     @Autowired
     private PriceService priceService;
 
-    @GetMapping("/productPriceByDate")
-    public ResponseEntity<List<PriceResponse>> getProductPriceByDate(@RequestBody ProductPriceByDateRequest request) {
-        List<PriceResponse> result = priceService.getProductPriceByDate(request);
+
+//    @PostMapping("/productPriceByDate")
+//    public ResponseEntity<List<PriceResponse>> getProductPriceByDate(@RequestBody ProductPriceByDateRequest request) {
+//        //List<PriceResponse> result = priceService.getProductPriceByDate(request);
+//
+//        return ResponseEntity.ok(null);
+//    }
+
+    // Swagger non permite pasar un requestBody nunha chamada de tipo get, polo que se recibiran parametros
+    @GetMapping(value = "/productPriceByDate")
+    public ResponseEntity<PriceResponse> getproductPriceByDate(
+            @RequestParam("productId") @Parameter(example = "35455") Long productId,
+            @RequestParam("brandId") @Parameter(example = "1") Long brandId,
+            @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) @Parameter(example = "2020-12-30T20:20:20Z") LocalDateTime date
+    ) {
+        PriceResponse result = priceService.getProductPriceByDate(productId, brandId, date);
 
         return ResponseEntity.ok(result);
     }
-
 }

@@ -1,10 +1,20 @@
 package com.pricesApi.entity;
 
-import javax.persistence.*;
-import java.util.Date;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "PRICE")
+@Getter
+@Setter
 public class Price {
 
 
@@ -15,10 +25,10 @@ public class Price {
     private Long brandId;
 
     @Column(columnDefinition = "TIMESTAMP")
-    private Date startDate;
+    private LocalDateTime startDate;
 
     @Column(columnDefinition = "TIMESTAMP")
-    private Date endDate;
+    private LocalDateTime endDate;
 
     private Long priceList;
 

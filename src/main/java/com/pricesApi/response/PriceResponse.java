@@ -2,14 +2,18 @@ package com.pricesApi.response;
 
 import com.pricesApi.entity.Price;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.BeanUtils;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class PriceResponse {
+
+    private long id;
 
     private Long productId;
 
@@ -17,9 +21,9 @@ public class PriceResponse {
 
     private Long priceList;
 
-    private Date startDate;
+    private LocalDateTime startDate;
 
-    private Date endDate;
+    private LocalDateTime endDate;
 
     private Double price;
 

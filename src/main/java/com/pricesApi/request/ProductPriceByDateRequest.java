@@ -1,6 +1,6 @@
 package com.pricesApi.request;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.v3.oas.annotations.Parameter;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,10 +10,13 @@ import java.util.Date;
 @Setter
 public class ProductPriceByDateRequest {
 
+    @Parameter
     private Long productId;
 
+    @Parameter
     private Long brandId;
 
-    @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss", timezone = "Europe/Madrid")
+    @Parameter
+    //@JsonFormat(pattern = "yyyy-MM-dd-HH.mm.ss", timezone = "Europe/Madrid")
     private Date date;
 }
