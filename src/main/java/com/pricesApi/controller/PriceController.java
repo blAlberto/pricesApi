@@ -2,6 +2,7 @@ package com.pricesApi.controller;
 
 import com.pricesApi.response.PriceResponse;
 import com.pricesApi.service.PriceService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -20,16 +21,9 @@ public class PriceController {
     @Autowired
     private PriceService priceService;
 
-
-//    @PostMapping("/productPriceByDate")
-//    public ResponseEntity<List<PriceResponse>> getProductPriceByDate(@RequestBody ProductPriceByDateRequest request) {
-//        //List<PriceResponse> result = priceService.getProductPriceByDate(request);
-//
-//        return ResponseEntity.ok(null);
-//    }
-
     // Swagger non permite pasar un requestBody nunha chamada de tipo get, polo que se recibiran parametros
     @GetMapping(value = "/productPriceByDate")
+    @Operation(summary = "Get the price of a certain product by date")
     public ResponseEntity<PriceResponse> getproductPriceByDate(
             @RequestParam("productId") @Parameter(example = "35455") Long productId,
             @RequestParam("brandId") @Parameter(example = "1") Long brandId,

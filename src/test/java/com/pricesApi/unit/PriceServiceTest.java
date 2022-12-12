@@ -1,4 +1,4 @@
-package com.pricesApi;
+package com.pricesApi.unit;
 
 import com.pricesApi.entity.Price;
 import com.pricesApi.repository.PriceRepository;
@@ -10,14 +10,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-@SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
 public class PriceServiceTest {
 

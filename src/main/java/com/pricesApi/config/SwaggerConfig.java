@@ -15,6 +15,7 @@ public class SwaggerConfig {
                 .components(new Components())
                 .info(new Info()
                         .title("Prices API")
+                        .description("Simple api for productPriceByDate endpoint")
                 );
     }
 

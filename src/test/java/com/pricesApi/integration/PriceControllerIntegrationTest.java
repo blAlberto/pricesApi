@@ -1,4 +1,4 @@
-package com.pricesApi;
+package com.pricesApi.integration;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -80,9 +80,9 @@ class PriceControllerIntegrationTest {
 	@Test
 	public void getProductPriceByDateEmpty() throws Exception {
 		MvcResult result = mockMvc.perform(get("/prices/productPriceByDate").
-				param("productId", "1").
+				param("productId", "35455").
 				param("brandId", "1").
-				param("date", "2020-06-16T21:00:00Z").accept(MediaType.APPLICATION_JSON)).andReturn();
+				param("date", "2020-06-13T12:00:00Z").accept(MediaType.APPLICATION_JSON)).andReturn();
 		Assertions.assertEquals("", result.getResponse().getContentAsString());
 	}
 }
